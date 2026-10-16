@@ -10,7 +10,7 @@ function setup() {
  // put setup code here
   textOutput();
 
-  createCanvas(400, 500, WEBGL);
+  createCanvas(700, 500, WEBGL);
 
   //angleMode(DEGREES);
 
@@ -44,7 +44,7 @@ function draw() {
 
 }
 
-function drawDoor(){
+/*function drawDoor(){
   fill(bodycolor.r, bodycolor.g, bodycolor.b); //body
   box(100,300,10);
   //resetMatrix();
@@ -106,4 +106,4 @@ function generateDoor(){
   /*quad(doorx, doory, doorx + 80, doory + 20, doorx+80, doory +170, doorx, doory + 150); //frame
   quad(doorx, doory, doorx + 80, doory + 20, doorx + 100, doory+10, doorx+20, doory-10);
   quad(doorx + 80, doory + 20, doorx + 100, doory+10, doorx + 100, doory+160, doorx + 80, doory + 170);*/
-}
+
