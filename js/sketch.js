@@ -1,14 +1,37 @@
-bodycolor = {r: 255, g:0, b:100};
-handlecolor = {r: 150, g:75, b:0};
-havewindow = true;
-havecross = true;
-havelock = true;
-isdouble = true;
-//window;
+/*interface yeardata = {
+  year: number, 
+  releasedpop: number,
+  captivepop: number,
+  wildbornpop: number
+}*/
+
+let condordata = [{year: 1990, releasedpop: 0, captivepop: 61, wildbornpop: 0},
+  {year: 1991, releasedpop: 0, captivepop: 77, wildbornpop: 0},
+  {year: 1992, releasedpop: 7, captivepop: 86, wildbornpop: 0},
+  {year: 1993, releasedpop: 9, captivepop: 102, wildbornpop: 0},
+  {year: 1994, releasedpop: 0, captivepop: 109, wildbornpop: 0},
+  {year: 1995, releasedpop: 6, captivepop: 114, wildbornpop: 0},
+  {year: 1996, releasedpop: 17, captivepop: 122, wildbornpop: 0},
+  {year: 1997, releasedpop: 29, captivepop: 118, wildbornpop: 0},
+  {year: 1998, releasedpop: 38, captivepop: 130, wildbornpop: 0},
+  {year: 1999, releasedpop: 49, captivepop: 128, wildbornpop: 0},
+  {year: 2000, releasedpop: 50, captivepop: 128, wildbornpop: 0},
+  {year: 2001, releasedpop: 58, captivepop: 129, wildbornpop: 0},
+  {year: 2002, releasedpop: 81, captivepop: 130, wildbornpop: 0},
+  {year: 2003, releasedpop: 83, captivepop: 131, wildbornpop: 1},
+  {year: 2004, releasedpop: 92, captivepop: 132, wildbornpop: 4},
+  {year: 2005, releasedpop: 120, captivepop: 151, wildbornpop: 5},
+  {year: 2006, releasedpop: 124, captivepop: 153, wildbornpop: 6},
+  {year: 2007, releasedpop: 135, captivepop: 151, wildbornpop: 12},
+  {year: 2008, releasedpop: 154, captivepop: 148, wildbornpop: 19},
+  {year: 2009, releasedpop: 166, captivepop: 158, wildbornpop: 26},
+  {year: 2010, releasedpop: 180, captivepop: 166, wildbornpop: 24},
+  {year: 2011, releasedpop: 188, captivepop: 173, wildbornpop: 29},
+  {year: 2011, releasedpop: 200, captivepop: 169, wildbornpop: 35},]
 
 function setup() {
+
  // put setup code here
-  textOutput();
 
   createCanvas(700, 500, WEBGL);
 
@@ -25,23 +48,10 @@ function setup() {
 function draw() {
   // put drawing code here
   background(220);
-  orbitControl();
+  //orbitControl();
+}
 
-  if(isdouble == false){
-    drawDoor();
-  }
-  else{
-    translate(-50,0,-8);
-    drawDoor();
-    scale(-1, 1);
-    translate(-100,0,-8);
-    drawDoor();
-    scale(-1, 1);
-    translate(150,0,8);
-  }
-  
-  
-
+function drawGraph(){
 }
 
 /*function drawDoor(){
