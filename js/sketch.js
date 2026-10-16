@@ -5,6 +5,7 @@
   wildbornpop: number
 }*/
 let canvwidth = 700; let canvheight = 500;
+let maxcondorpop = 700;
 
 let condordata = [{year: 1990, releasedpop: 0, captivepop: 61, wildbornpop: 0},
   {year: 1991, releasedpop: 0, captivepop: 77, wildbornpop: 0},
@@ -42,17 +43,30 @@ function draw() {
 }
 
 function drawGraph(){
-  stroke('black');
+  strokeWeight(1); //title
+  textSize(32);
+  text("Californian Condor Population", canvwidth/4, canvheight/10-10);
+
+  stroke('black'); //main graph bars
   strokeWeight(4);
   line(canvwidth/10, 9*canvheight/10, 13*canvwidth/14, 9*canvheight/10);
   line(canvwidth/10, 9*canvheight/10,canvwidth/10, canvheight/10);
 
-  strokeWeight(2);
-  for(let i = 0; i < condordata.length; i++){
+  for(let i = 0; i < condordata.length; i++){ //x axis
+    strokeWeight(2);
     let xpoint = canvwidth/10+(i+1)*(9*canvwidth/10)/(condordata.length + 2);
     line(xpoint, 9*canvheight/10+5, xpoint, 9*canvheight/10-5);
     strokeWeight(0.5);
     textSize(8);
     text(condordata[i].year, xpoint-10, 9*canvheight/10+20);
+  }
+
+  for(let i = 1; i < maxcondorpop/100; i++){ //y axis
+    strokeWeight(2);
+    let ypoint = (9*canvheight/10 - (i)*(9*canvheight/10)/(maxcondorpop/100));
+    line(canvwidth/10-8, ypoint, canvwidth/10+8, ypoint);
+    strokeWeight(0.5);
+    textSize(10);
+    text(i*100, canvwidth/10-30, ypoint+2);
   }
 }
