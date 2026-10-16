@@ -43,14 +43,18 @@ function draw() {
 }
 
 function drawGraph(){
+  stroke('black');
   strokeWeight(1); //title
   textSize(32);
   text("Californian Condor Population", canvwidth/4, canvheight/10-10);
-
-  stroke('black'); //main graph bars
+   //main graph bars
   strokeWeight(4);
   line(canvwidth/10, 9*canvheight/10, 13*canvwidth/14, 9*canvheight/10);
   line(canvwidth/10, 9*canvheight/10,canvwidth/10, canvheight/10);
+
+  let wildpointarray = []; let captivepointarray = []; 
+  let totalpointarray = [];
+  
 
   for(let i = 0; i < condordata.length; i++){ //x axis
     strokeWeight(2);
@@ -59,6 +63,10 @@ function drawGraph(){
     strokeWeight(0.5);
     textSize(8);
     text(condordata[i].year, xpoint-10, 9*canvheight/10+20);
+
+    wildpointarray.push(createVector(xpoint, 9*canvheight/10 -(condordata[i].wildbornpop+condordata[i].releasedpop)));
+    captivepointarray.push(createVector(xpoint, 14*canvheight/15 -condordata[i].captivepop));
+    totalpointarray.push(createVector(xpoint, 14*canvheight/15 -(condordata[i].wildbornpop+condordata[i].releasedpop+condordata[i].captivepop)));
   }
 
   for(let i = 1; i < maxcondorpop/100; i++){ //y axis
@@ -68,5 +76,22 @@ function drawGraph(){
     strokeWeight(0.5);
     textSize(10);
     text(i*100, canvwidth/10-30, ypoint+2);
+  }
+
+  strokeWeight(2);
+  stroke('green');
+  for(let i = 0; i < wildpointarray.length - 1; i++){ //draws points
+    line(wildpointarray[i].x, wildpointarray[i].y,wildpointarray[i+1].x, wildpointarray[i+1].y)
+    circle(wildpointarray[i+1].x, wildpointarray[i+1].y,4)
+  }
+  stroke('red');
+  for(let i = 0; i < captivepointarray.length - 1; i++){ 
+    line(captivepointarray[i].x, captivepointarray[i].y,captivepointarray[i+1].x, captivepointarray[i+1].y)
+    circle(captivepointarray[i+1].x, captivepointarray[i+1].y,4)
+  }
+  stroke('blue');
+  for(let i = 0; i < totalpointarray.length - 1; i++){ 
+    line(totalpointarray[i].x, totalpointarray[i].y,totalpointarray[i+1].x, totalpointarray[i+1].y)
+    circle(totalpointarray[i+1].x, totalpointarray[i+1].y,4)
   }
 }
