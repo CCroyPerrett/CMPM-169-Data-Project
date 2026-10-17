@@ -91,6 +91,19 @@ function drawGraph(){
     text(i*100, canvwidth/10-30, ypoint+2);
   }
 
+  stroke('blue'); strokeWeight(4); //Legend
+  line(95,147,115,147);
+  stroke('black'); strokeWeight(0.5)
+  text("Total Condor Population", 120,150);
+  stroke('red'); strokeWeight(4); 
+  line(95,167,115,167);
+  stroke('black'); strokeWeight(0.5)
+  text("Captive Condor Population", 120,170);
+  stroke('green'); strokeWeight(4); 
+  line(95,187,115,187);
+  stroke('black'); strokeWeight(0.5)
+  text("Wild Condor Population", 120,190);
+
   strokeWeight(2);
   stroke('green');
   for(let i = 0; i < wildpointarray.length - 1; i++){ //draws points
