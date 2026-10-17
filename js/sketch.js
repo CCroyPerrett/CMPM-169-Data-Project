@@ -29,10 +29,23 @@ let condordata = [{year: 1990, releasedpop: 0, captivepop: 61, wildbornpop: 0},
   {year: 2009, releasedpop: 166, captivepop: 158, wildbornpop: 26},
   {year: 2010, releasedpop: 180, captivepop: 166, wildbornpop: 24},
   {year: 2011, releasedpop: 188, captivepop: 173, wildbornpop: 29},
-  {year: 2012, releasedpop: 200, captivepop: 169, wildbornpop: 35},]
+  {year: 2012, releasedpop: 200, captivepop: 169, wildbornpop: 35},
+  {year: 2013, releasedpop: 230, captivepop: 182, wildbornpop: 0},
+  {year: 2014, releasedpop: 228, captivepop: 193, wildbornpop: 0},
+  {year: 2015, releasedpop: 268, captivepop: 167, wildbornpop: 0},
+  {year: 2016, releasedpop: 276, captivepop: 170, wildbornpop: 0},
+  {year: 2017, releasedpop: 290, captivepop: 173, wildbornpop: 0},
+  {year: 2018, releasedpop: 312, captivepop: 176, wildbornpop: 0},
+  {year: 2019, releasedpop: 337, captivepop: 181, wildbornpop: 0},
+  {year: 2020, releasedpop: 329, captivepop: 175, wildbornpop: 0},
+  {year: 2021, releasedpop: 338, captivepop: 203, wildbornpop: 0},
+  {year: 2022, releasedpop: 350, captivepop: 214, wildbornpop: 0},
+  {year: 2023, releasedpop: 344, captivepop: 217, wildbornpop: 0},
+  {year: 2024, releasedpop: 369, captivepop: 197, wildbornpop: 0},
+  {year: 2025, releasedpop: 392, captivepop: 215, wildbornpop: 0},]
 
 function setup() {
-  createCanvas(canvwidth, canvheight);
+  createCanvas(canvwidth+200, canvheight);
 
 
 }
@@ -49,7 +62,7 @@ function drawGraph(){
   text("Californian Condor Population", canvwidth/4, canvheight/10-10);
    //main graph bars
   strokeWeight(4);
-  line(canvwidth/10, 9*canvheight/10, 13*canvwidth/14, 9*canvheight/10);
+  line(canvwidth/10, 9*canvheight/10, 1.25*canvwidth, 9*canvheight/10);
   line(canvwidth/10, 9*canvheight/10,canvwidth/10, canvheight/10);
 
   let wildpointarray = []; let captivepointarray = []; 
@@ -58,15 +71,15 @@ function drawGraph(){
 
   for(let i = 0; i < condordata.length; i++){ //x axis
     strokeWeight(2);
-    let xpoint = canvwidth/10+(i+1)*(9*canvwidth/10)/(condordata.length + 2);
+    let xpoint = canvwidth/10+(i+1)*(1.2*canvwidth)/(condordata.length + 2);
     line(xpoint, 9*canvheight/10+5, xpoint, 9*canvheight/10-5);
     strokeWeight(0.5);
     textSize(8);
     text(condordata[i].year, xpoint-10, 9*canvheight/10+20);
 
-    wildpointarray.push(createVector(xpoint, 9*canvheight/10 -(condordata[i].wildbornpop+condordata[i].releasedpop)));
-    captivepointarray.push(createVector(xpoint, 14*canvheight/15 -condordata[i].captivepop));
-    totalpointarray.push(createVector(xpoint, 14*canvheight/15 -(condordata[i].wildbornpop+condordata[i].releasedpop+condordata[i].captivepop)));
+    wildpointarray.push(createVector(xpoint, 9*canvheight/10 -(condordata[i].wildbornpop+condordata[i].releasedpop)/1.5));
+    captivepointarray.push(createVector(xpoint, 14*canvheight/15 -condordata[i].captivepop/1.5));
+    totalpointarray.push(createVector(xpoint, 14*canvheight/15 -(condordata[i].wildbornpop+condordata[i].releasedpop+condordata[i].captivepop)/1.5));
   }
 
   for(let i = 1; i < maxcondorpop/100; i++){ //y axis
