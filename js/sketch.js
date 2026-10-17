@@ -1,9 +1,3 @@
-/*interface yeardata = {
-  year: number, 
-  releasedpop: number,
-  captivepop: number,
-  wildbornpop: number
-}*/
 let canvwidth = 700; let canvheight = 500;
 let maxcondorpop = 700; let zoom = 50; let focus = 1;
 
@@ -57,11 +51,9 @@ function draw() {
     focusSlider.value = (zoom - 49)/(250)*36;
     focus = focusSlider.value;
   }
-  //console.log("zoom is: " + zoom);
+
   background(220);
   drawGraph();
-  //zoom = Number(document.getElementById("zoomslider").value);
-  //console.log("zoom is: " + zoom);
 }
 
 function drawGraph(){
@@ -69,8 +61,9 @@ function drawGraph(){
   strokeWeight(1); //title
   textSize(32);
   text("Californian Condor Population", canvwidth/4, canvheight/10-10);
-   //main graph bars
-  strokeWeight(4);
+
+  
+  strokeWeight(4); //main graph bars
   line(canvwidth/10, 9*canvheight/10, 1.25*canvwidth, 9*canvheight/10);
   line(canvwidth/10, 9*canvheight/10,canvwidth/10, canvheight/10);
 
@@ -86,6 +79,7 @@ function drawGraph(){
     textSize(8);
     text(condordata[i].year, xpoint-10, 9*canvheight/10+20);
 
+    //tracks which data points go where
     wildpointarray.push(createVector(xpoint, 9*canvheight/10 -(condordata[i].wildbornpop+condordata[i].releasedpop)/1.5));
     captivepointarray.push(createVector(xpoint, 14*canvheight/15 -condordata[i].captivepop/1.5));
     totalpointarray.push(createVector(xpoint, 14*canvheight/15 -(condordata[i].wildbornpop+condordata[i].releasedpop+condordata[i].captivepop)/1.5));
@@ -113,9 +107,9 @@ function drawGraph(){
   stroke('black'); strokeWeight(0.5)
   text("Wild Condor Population", 120,190);
 
-  strokeWeight(2);
+  strokeWeight(2); //draws points
   stroke('green');
-  for(let i = 0; i < wildpointarray.length - 1; i++){ //draws points
+  for(let i = 0; i < wildpointarray.length - 1; i++){ 
     line(wildpointarray[i].x, wildpointarray[i].y,wildpointarray[i+1].x, wildpointarray[i+1].y)
     circle(wildpointarray[i+1].x, wildpointarray[i+1].y,4)
   }
