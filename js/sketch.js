@@ -5,7 +5,7 @@
   wildbornpop: number
 }*/
 let canvwidth = 700; let canvheight = 500;
-let maxcondorpop = 700;
+let maxcondorpop = 700; let zoom = 50; let focus = 1;
 
 let condordata = [{year: 1990, releasedpop: 0, captivepop: 61, wildbornpop: 0},
   {year: 1991, releasedpop: 0, captivepop: 77, wildbornpop: 0},
@@ -46,13 +46,22 @@ let condordata = [{year: 1990, releasedpop: 0, captivepop: 61, wildbornpop: 0},
 
 function setup() {
   createCanvas(canvwidth+200, canvheight);
-
-
 }
 
 function draw() {
+  let zoomSlider = document.getElementById("zoomslider");
+  zoom = zoomSlider.value;
+  let focusSlider = document.getElementById("focusslider");
+  focus = focusSlider.value;
+  if((zoom - 49)/(250)*36 < focus){
+    focusSlider.value = (zoom - 49)/(250)*36;
+    focus = focusSlider.value;
+  }
+  //console.log("zoom is: " + zoom);
   background(220);
   drawGraph();
+  //zoom = Number(document.getElementById("zoomslider").value);
+  //console.log("zoom is: " + zoom);
 }
 
 function drawGraph(){
@@ -71,7 +80,7 @@ function drawGraph(){
 
   for(let i = 0; i < condordata.length; i++){ //x axis
     strokeWeight(2);
-    let xpoint = canvwidth/10+(i+1)*(1.2*canvwidth)/(condordata.length + 2);
+    let xpoint = canvwidth/10+(i+1)*((zoom/50)*1.2*canvwidth)/(condordata.length + 2)-(120*(focus-1));
     line(xpoint, 9*canvheight/10+5, xpoint, 9*canvheight/10-5);
     strokeWeight(0.5);
     textSize(8);
